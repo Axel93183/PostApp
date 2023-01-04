@@ -25,7 +25,7 @@ Table: posts: id, auteurID, titre, image et contenu DONE
 
     - Si l'adresse email est valide, insérer les données de l'utilisateur (adresse email, nom d'utilisateur, mot de passe ) dans la table "users" de la base de données "postapp".
 
-
+done done done!!!
 
 - formulaire de connection 
 - script pour verifier si l'utilisateur a donné un email et mot de passe correct

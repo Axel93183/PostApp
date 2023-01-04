@@ -1,4 +1,5 @@
 <?php
+//session_start();
 include_once "../models/userModel.php";
 // Classe UserController
 class UserController {
@@ -28,5 +29,26 @@ class UserController {
     $this->userModel->insertUser();
 
     return "Inscription réussie.";
+  }
+
+  public function signin($email, $password) {
+    // Récupération de l'utilisateur avec cet email et ce mot de passe
+    $userModel = new UserModel($email,'', $password);
+    $user = $userModel->getUserByEmailAndPassword($email, $password);
+
+    if ($user) {
+      // L'utilisateur a été trouvé, on stocke ses informations en session
+      $_SESSION['id'] = $user['id'];
+      $_SESSION['email'] = $user['email'];
+      $_SESSION['username'] = $user['username'];
+      $_SESSION['password'] = $user['password'];
+
+      // Redirection vers la page protégée
+      header('Location: ./profil.php');
+      exit;
+    } else {
+      // L'utilisateur n'a pas été trouvé, on affiche un message d'erreur
+      echo 'Email ou mot de passe incorrect';
+    }
   }
 }

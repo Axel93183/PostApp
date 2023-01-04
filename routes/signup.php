@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include_once "../controllers/userController.php";
 
 
@@ -14,9 +14,12 @@ $userController = new UserController($email, $username, $password);
 
 // Inscription de l'utilisateur
 $result = $userController->signup();
+    
+header('Location: /login.php?result='.$result);
 
-// Affichage du résultat de l'inscription
-echo $result;
+
+
+
 
 
 

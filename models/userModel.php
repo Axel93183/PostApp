@@ -1,5 +1,5 @@
 <?php 
-
+// session_start();
 include_once "../models/DB.php";
 
 class UserModel extends DB{
@@ -42,6 +42,12 @@ class UserModel extends DB{
         $stmt -> bindParam(3, $this -> password);
     
         $stmt -> execute();
+      }
+
+      public function getUserByEmailAndPassword($email, $password) {
+        $stmt = $this->getConnect()->prepare('SELECT * FROM users WHERE email = ? AND password = ?');
+        $stmt->execute([$email, sha1($password)]);
+        return $stmt->fetch();
       }
     
   }
