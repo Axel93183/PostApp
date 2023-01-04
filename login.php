@@ -12,7 +12,7 @@ include_once "./components/navbar.php"
 
 ?>
 
-
+<h1>Inscription</h1>
 <form action="./routes/signup.php" method="post">
   <label for="email">Adresse email:</label><br>
   <input type="email" id="email" name="email"><br>

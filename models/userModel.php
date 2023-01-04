@@ -1,6 +1,6 @@
 <?php 
 
-include_once "./models/DB.php";
+include_once "../models/DB.php";
 
 class UserModel extends DB{
     private $email;
@@ -15,12 +15,10 @@ class UserModel extends DB{
     }
   
     public function checkEmailExists() {
-      // Connexion à la base de données
-      $db = new PDO('mysql:host=localhost;dbname=postapp', 'username', 'password');
-  
+    
       // Préparez la requête pour récupérer l'utilisateur avec l'adresse e-mail donnée
-      $stmt = $db->prepare('SELECT * FROM users WHERE email = :email');
-      $stmt->bindParam(':email', $this->email);
+      $stmt = $this -> getConnect()->prepare('SELECT * FROM users WHERE email =?');
+      $stmt->bindParam(1, $this->email);
   
       // Exécutez la requête
       $stmt->execute();
@@ -35,6 +33,17 @@ class UserModel extends DB{
         return false;
       }
     }
+
+    function insertUser(){
+        $stmt = $this -> getConnect() -> prepare('INSERT INTO users (email, username,password) VALUES (? ,?,?)');
+    
+        $stmt -> bindParam(1, $this -> email);
+        $stmt -> bindParam(2, $this -> username);
+        $stmt -> bindParam(3, $this -> password);
+    
+        $stmt -> execute();
+      }
+    
   }
   
   
