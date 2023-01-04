@@ -6,9 +6,9 @@ On va créer un site qui permet aux utilisateurs de s'authentifier et d'ajouter 
 
 ## Base de donnée
 
-Table: utilisateurs: id, email, nom d'utilisateur et mot de passe
+Table: utilisateurs: id, email, nom d'utilisateur et mot de passe avatar couverture
 
-Table: publications: auteurID, titre, image et contenu
+Table: publications: id, auteurID, titre, image et contenu
 
 ## Page login
 
@@ -26,3 +26,6 @@ Table: publications: auteurID, titre, image et contenu
 - un formulaire qui permet à l'utilisateur de créer un nouveau post. 
 - Un script (/routes/uploadPost.php), enregistre la publication, et met a jour les post de l'utilisateur dans la base de données
 
+## Page d'accueil
+
+- Afficher tous les posts de tout les utilisateurs ordonnés par date. (les plus récents d'abord).
