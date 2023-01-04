@@ -6,9 +6,9 @@ On va créer un site qui permet aux utilisateurs de s'authentifier et d'ajouter 
 
 ## Base de donnée
 
-Table: utilisateurs: id, email, nom d'utilisateur et mot de passe avatar couverture
+Table: users: id, email, nom d'utilisateur et mot de passe, avatar, couverture
 
-Table: publications: id, auteurID, titre, image et contenu
+Table: posts: id, auteurID, titre, image et contenu
 
 ## Page login
 
