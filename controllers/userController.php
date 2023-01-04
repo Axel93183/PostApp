@@ -13,7 +13,7 @@ class UserController {
     $this->email = $email;
     $this->username = $username;
     $this->password = $password;
-    $this->userModel = new UserModel(); // Création d'un objet UserModel
+    $this->userModel = new UserModel($email, $username, $password); // Création d'un objet UserModel
   }
 
   // Méthode pour inscrire un utilisateur
@@ -24,8 +24,8 @@ class UserController {
       return "L'adresse email est déjà utilisée par un autre compte.";
     }
 
-    // Si l'adresse email est valide, insérer les données de l'utilisateur dans la table "users" de la base de données "postapp"
-    $this->userModel->insertUser($this->email, $this->username, $this->password);
+    // // Si l'adresse email est valide, insérer les données de l'utilisateur dans la table "users" de la base de données "postapp"
+    // $this->userModel->insertUser($this->email, $this->username, $this->password);
 
     return "Inscription réussie.";
   }
