@@ -1,11 +1,28 @@
 # PostApp
 
-créer un site qui permet aux utilisateurs de s'authentifier et d'ajouter des publications:
+# Road map
 
-Créez une base de données avec une table "utilisateurs" qui contiendra les informations de login (email, nom d'utilisateur et mot de passe) et une table "publications" qui contiendra les informations sur les publications (auteurID, titre, image et contenu).
+On va créer un site qui permet aux utilisateurs de s'authentifier et d'ajouter des publications:
 
-Créez une page d'accueil qui affiche toutes les publications de tous les utilisateurs, ordonnées par date. Utilisez une requête SQL pour récupérer les données de la base de données et affichez-les à l'aide de boucles et de fonctions PHP.
+## Base de donnée
 
-Créez une page de login qui permet aux utilisateurs de s'inscrire et de s'authentifier. Utilisez une formulaire HTML et du PHP pour traiter les données du formulaire et vérifier les informations de login contre celles de la base de données. N'oubliez pas de mettre en place des mesures de sécurité pour protéger les mots de passe (par exemple, en utilisant la fonction password_hash()).
+Table: utilisateurs: id, email, nom d'utilisateur et mot de passe
 
-Créez une page de profil qui affiche les informations de l'utilisateur (avatar, nom d'utilisateur, email et couverture) et un formulaire qui permet à l'utilisateur de créer un nouveau post. Utilisez une requête SQL pour insérer les données du nouveau post dans la base de données et affichez-les à l'aide de boucles et de fonctions PHP.
+Table: publications: auteurID, titre, image et contenu
+
+## Page login
+
+- Un formulaire pour s'inscrire
+- Script pour ajouter un user dans la base de données 
+
+- formulaire de connection 
+- script pour verifier si l'utilisateur a donné un email et mot de passe correct
+- Stocker les infos id, email, nom d'utilisateur et mot de passe
+
+-
+## Page Profil
+
+- Afficher les informations de l'utilisateur (avatar, nom d'utilisateur, email et couverture) 
+- un formulaire qui permet à l'utilisateur de créer un nouveau post. 
+- Un script (/routes/uploadPost.php), enregistre la publication, et met a jour les post de l'utilisateur dans la base de données
+
