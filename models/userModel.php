@@ -47,7 +47,7 @@ class UserModel extends DB{
       public function getUserByEmailAndPassword($email, $password) {
         $stmt = $this->getConnect()->prepare('SELECT * FROM users WHERE email = ? AND password = ?');
         $stmt->execute([$email, sha1($password)]);
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
       }
     
       function fetch() : array {
@@ -65,8 +65,19 @@ class UserModel extends DB{
         
         return $userFromDB;
       }
-  }
+
+      static function fetchByID($id){
+        $connect = DB::getConnection();
+    
+        $stmt = $connect -> getConnect() -> prepare('SELECT * FROM users WHERE id=?');
+    
+        $stmt -> bindParam(1, $id);
+        $res = $stmt ->execute();
+        $userFromDB = $stmt -> fetch(PDO::FETCH_ASSOC);
+        return $userFromDB;
+      }
+
   
   
   
-  
+}

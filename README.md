@@ -28,9 +28,19 @@ Table: posts: id, auteurID, titre, image et contenu DONE
 done done done!!!
 
 - formulaire de connection 
+    - Testez le formulaire de connexion pour vous assurer 
+    
+    qu'il fonctionne correctement et 
+    
+    que les informations d'identification sont correctement vérifiées.
+
+    - Ajoutez la gestion des erreurs pour gérer les cas où les données du formulaire sont incorrectes.
+ 
+
 - script pour verifier si l'utilisateur a donné un email et mot de passe correct
 - Stocker les infos id, email, nom d'utilisateur et mot de passe
 
+DONE DONE DONE!!!!
 -
 ## Page Profil
 

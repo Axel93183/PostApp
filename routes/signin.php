@@ -6,6 +6,7 @@ $password = $_POST['password'];
 
 // Instanciation du contrôleur utilisateur
 if(!(isset($_POST['email'], $_POST['password']))){
+
     header("Location: /login.php");
     die();
   }
@@ -15,11 +16,14 @@ if(!(isset($_POST['email'], $_POST['password']))){
 if(!($user -> isDataValid())){
     header("Location: /login.php?connexion=error&" . $user -> getErrors());
     die();
+  }else{
+    $user->signin($email, $password);
+    // header("location: /profil.php");
   }
 
   //Verifier si l'utilisateur existe
 if(!$user -> exist()){
-    header("Location: /login.php?connexion=error&emailError=EmailDosntExist" );
+    header("Location: /login.php?connexion=error&emailError=EmailDoesntExist" );
     die();
   }
 
@@ -29,11 +33,16 @@ if(!$user -> isPasswordCorrect()){
     header("Location: /login.php?connexion=error&passwordError=PasswordIncorrect" );
     die();
   }
-  
-$_SESSION['email'] = $user ->getEmail();
-$_SESSION['username'] = $user -> getUsername();
-$_SESSION['password'] = $user -> getPassword();
 
-header("Location: /profil.php");
+  //aller chercher le user depuis la DB
+
+
+
+
+$_SESSION['email'] = $user ->getEmail();
+
+$_SESSION["id"] = $user -> getId();
+
+// header("Location: /profil.php");
 
 ?>

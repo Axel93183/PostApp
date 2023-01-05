@@ -7,6 +7,8 @@ class UserController {
   private $email;
   private $username;
   private $password;
+  private $id;
+
   private $userModel;
 
   
@@ -34,7 +36,14 @@ class UserController {
     return "Inscription réussie.";
   }
 
+function signin($email, $password) {
+  // Récupérer l'utilisateur depuis la base de données
+  $zidane = $this->userModel->getUserByEmailAndPassword($this->email, $this->password);
+  
+  var_dump($zidane);
 
+  return true;
+}
 
   /**
    * Get the value of email
@@ -104,4 +113,14 @@ class UserController {
 
     return $userFromDB['password'] === $this -> password;
   }
+
+  /**
+   * Get the value of id
+   */ 
+  public function getId()
+  {
+    return $this->id;
   }
+  }
+
+ 

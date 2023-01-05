@@ -9,7 +9,7 @@ if(isset($_GET['connexion'])){
   }
 
   if(isset($_GET['passwordError'])){
-    $connexionPasswordError = $_GET['passwordError'] === "InputInvalid" ? "Mot de passe trop court" : "Mauvais mot de passe!";
+    $connexionPasswordError = $_GET['passwordError'] === "InputInvalid" ? "" : "Mot de passe incorrecte";
   }
 }
 ?>
@@ -24,8 +24,8 @@ if(isset($_GET['connexion'])){
     
 <?php 
 
-include_once "./components/navbar.php"
-
+include_once "./components/navbar.php";
+var_dump($_SESSION);
 ?>
 <div>
 <h1>Inscription</h1>
