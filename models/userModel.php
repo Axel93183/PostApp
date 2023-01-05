@@ -50,6 +50,21 @@ class UserModel extends DB{
         return $stmt->fetch();
       }
     
+      function fetch() : array {
+        $stmt = $this -> getConnect() -> prepare('SELECT * FROM users WHERE email=?');
+    
+        $stmt -> bindParam(1, $this ->email);
+    
+        $res = $stmt -> execute();
+        
+        $userFromDB = $stmt -> fetch(PDO::FETCH_ASSOC);
+    
+        if(is_bool($userFromDB)){
+          return [];
+        }
+        
+        return $userFromDB;
+      }
   }
   
   

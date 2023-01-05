@@ -1,5 +1,17 @@
 <?php 
 session_start();
+$connexionEmailError = "";
+$connexionPasswordError = "";
+
+if(isset($_GET['connexion'])){
+  if(isset($_GET['emailError'])){
+    $connexionEmailError = $_GET['emailError'] === "InputInvalid" ? "Email incorrecte" : "Email n'existe pas!";
+  }
+
+  if(isset($_GET['passwordError'])){
+    $connexionPasswordError = $_GET['passwordError'] === "InputInvalid" ? "Mot de passe trop court" : "Mauvais mot de passe!";
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +45,7 @@ include_once "./components/navbar.php"
 //echo $_GET['result']
 ?> -->
 
-<p><?= $_GET['result'] ?></p>
+<p><?= isset($_GET['result']) ? $_GET['result'] : '' ?></p>
 </div>
 
 <div>
@@ -41,10 +53,16 @@ include_once "./components/navbar.php"
 <form method="post" action="./routes/signin.php">
   <label for="email">Email:</label><br>
   <input type="text" id="email" name="email"><br>
+  <p>
+    <?= $connexionEmailError ?>
+  </p><br>
   <label for="password">Mot de passe:</label><br>
-  <input type="password" id="password" name="password"><br><br>
+  <input type="password" id="password" name="password"><br>
+  <p>
+    <?= $connexionPasswordError ?>
+  </p><br>
   <input type="submit" value="Se connecter">
-</form> 
+
 </div>
 
 
