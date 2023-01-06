@@ -1,19 +1,3 @@
-<?php 
-session_start();
-$connexionEmailError = "";
-$connexionPasswordError = "";
-
-if(isset($_GET['connexion'])){
-  if(isset($_GET['emailError'])){
-    $connexionEmailError = $_GET['emailError'] === "InputInvalid" ? "Email incorrecte" : "Email n'existe pas!";
-  }
-
-  if(isset($_GET['passwordError'])){
-    $connexionPasswordError = $_GET['passwordError'] === "InputInvalid" ? "" : "Mot de passe incorrecte";
-  }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -25,7 +9,7 @@ if(isset($_GET['connexion'])){
 <?php 
 
 include_once "./components/navbar.php";
-var_dump($_SESSION);
+
 ?>
 <div>
 <h1>Inscription</h1>
@@ -46,6 +30,7 @@ var_dump($_SESSION);
 ?> -->
 
 <p><?= isset($_GET['result']) ? $_GET['result'] : '' ?></p>
+<p><?= isset($_GET['errorInputEmpty']) ? $_GET['errorInputEmpty'] : '' ?></p>
 </div>
 
 <div>
@@ -53,16 +38,13 @@ var_dump($_SESSION);
 <form method="post" action="./routes/signin.php">
   <label for="email">Email:</label><br>
   <input type="text" id="email" name="email"><br>
-  <p>
-    <?= $connexionEmailError ?>
-  </p><br>
+
   <label for="password">Mot de passe:</label><br>
   <input type="password" id="password" name="password"><br>
-  <p>
-    <?= $connexionPasswordError ?>
-  </p><br>
-  <input type="submit" value="Se connecter">
 
+  <input type="submit" value="Se connecter">
+  <p><?= isset($_GET['resultConnect']) ? $_GET['resultConnect'] : '' ?></p>
+  <p><?= isset($_GET['error']) ? $_GET['error'] : '' ?></p>
 </div>
 
 

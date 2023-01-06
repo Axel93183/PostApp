@@ -23,7 +23,7 @@ class DB{
     return $this->connect;
   }
 
-  static function getConnection(){
-    return new self();
-  }
+  // static function getConnection(){
+  //   return new self();
+  // }
 }
